@@ -3,8 +3,8 @@
 ## 1. What you need
 
 1. An FM-1 flashed with `releases/FM1-Lofi-Workbench.html` (open it in a Web-MIDI browser; the page embeds the stock V15 firmware, so you can go back).
-2. An Android phone with `releases/fm1lofi-vX.apk` installed (Android 6+; Bluetooth LE MIDI or a USB cable to the FM-1).
-3. Samples: any audio file the phone can decode (wav, mp3, flac, ogg, aac). The app ships a DEMO pack (TrapKit hits, Tape Key, Shiny, Phonk bass) so you can start without any files.
+2. A computer or Android phone with Chrome or Edge to run the web editor (`FM1-Lofi-Editor.html`; Bluetooth LE MIDI or a USB cable to the FM-1).
+3. Samples: any audio file the browser can decode (wav, mp3, flac, ogg, aac). The editor ships a DEMO pack (TrapKit hits, Tape Key, Shiny, Phonk bass) so you can start without any files.
 
 ## 2. The panel
 
@@ -125,7 +125,7 @@ The **web editor** (`releases/FM1-Lofi-Editor.html`, see WEB.md) does the same a
 3. The FM-1 shows **UPLOAD nn %**; the phone shows the progress. A pack of 160 KB is about 1250 blocks; lost blocks are re-sent automatically.
 4. When it is done the FM-1 returns to HOME with the new pack. Uploading **replaces** the pack on the device, and the loops/settings belong to a pack: a different pack starts with default settings and empty patterns. If the connection drops during an upload the FM-1 is left with **no pack** (never a half pack); just upload again.
 
-See [APP.md](APP.md) for the app.
+See [WEB.md](WEB.md) for the editor.
 
 ## 9. Defaults at a glance
 

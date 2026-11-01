@@ -1,6 +1,6 @@
 // codec.js against the C implementation: the DEMO pack image built by core/mkpack (out/demo.lfp) from the raw files of the app must be reproduced byte for byte.
 const fs = require('fs'), path = require('path'); const LF = require('../src/codec.js');
-const root = path.join(__dirname, '..', '..'), A = path.join(root, 'android/app/src/main/assets/demo');
+const root = path.join(__dirname, '..', '..'), A = path.join(root, 'samples/demo');
 const img = fs.readFileSync(path.join(root, 'out/demo.lfp'));
 const names = ['hit1','hit2','hit3','hit4','hit5','hit6','hit7','hit8','hit9','tape_key','shiny','phonk'];
 let off = 1152, bad = 0, total = 0, t0 = Date.now();

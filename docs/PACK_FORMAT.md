@@ -1,6 +1,6 @@
 # Pack format and flash layout
 
-Files: `core/lofi_pack.h` (build, parse), `core/mkpack.c` (command line builder), `android/.../Pack.java` + `Store.java` (the phone side model).
+Files: `core/lofi_pack.h` (build, parse), `core/mkpack.c` (command line builder), `web/src/pack.js` (the editor side model).
 
 ## The pack image
 

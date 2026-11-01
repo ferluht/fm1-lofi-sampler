@@ -133,3 +133,6 @@ core/test_core.c: encoder/decoder bit-exact, random-order superblock decode iden
 
 ## v0.9.2
 - Free first take is the default (SEQ page K4 switches to CLICK = count-in + metronome). The setting is not saved: every boot starts in FREE.
+
+## Android app removed (2026-11-01)
+The phone app (android/, Java) was removed from the repository; the web editor replaces it. The sections above describe it as history. Demo audio moved to samples/demo/.

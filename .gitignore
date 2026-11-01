@@ -1,9 +1,5 @@
 # build output
 firmware/build/
-android/app/build/
-android/app/.cxx/
-android/.gradle/
-android/local.properties
 web/dist/
 node_modules/
 __pycache__/
@@ -27,6 +23,5 @@ out/*
 !out/demo.lfp
 mp3/
 slices/
-# old APKs: the Android app is superseded by the web editor; release files are attached to GitHub releases, not committed
-releases/*.apk
+# release files are attached to GitHub releases, not committed
 releases/*.html

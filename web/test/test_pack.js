@@ -1,6 +1,6 @@
 // pack.js: the image of the DEMO pack built in JavaScript must be identical to the one built by core/mkpack (C); and reading it back works.
 const fs = require('fs'), path = require('path'); const LF = {}; for (const f of ['codec', 'proto', 'pack']) Object.assign(LF, require('../src/' + f + '.js'));
-const root = path.join(__dirname, '..', '..'), A = path.join(root, 'android/app/src/main/assets/demo');
+const root = path.join(__dirname, '..', '..'), A = path.join(root, 'samples/demo');
 const P = LF.pack, mk = (name, f, lo, hi, root_, flags, extra = {}) => { const raw = fs.readFileSync(path.join(A, f + '.raw')); return new P.Slot({ name, pcm: new Int16Array(raw.buffer, raw.byteOffset, raw.length / 2), lo, hi, root: root_, flags, ...extra }); };
 (async () => {
   const pack = new P.Pack({ name: 'DEMO', scale: 4, scaleRoot: 0 });

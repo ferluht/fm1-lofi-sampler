@@ -1,4 +1,4 @@
-# The web editor (replaces the Android app)
+# The web editor
 
 `releases/FM1-Lofi-Editor.html` is **one self-contained file** (about 270 KB, no network needed): open it in Chrome or Edge (desktop, or Chrome for Android), build packs and send them to the FM-1 over **Web MIDI** (USB, or a Bluetooth LE MIDI device paired in the system settings). It does everything the Android app does, runs the same codec byte for byte, and in addition reads `.lfp` files back.
 
@@ -28,7 +28,7 @@ The rules of zones, scales and keys are those of the instrument (USER_GUIDE.md);
 | File | Role |
 |---|---|
 | `codec.js` | the 2-bit LMS-ADPCM encoder and decoder, **byte exact with `core/lofi_codec.h`** (plain JS numbers, all intermediate values are exact below 2^53) |
-| `proto.js` | CRC-32 / CRC-16, 7-bit packing, SysEx frames, and the `Uploader` (port of `Uploader.java` / `lofi_sender.h`) |
+| `proto.js` | CRC-32 / CRC-16, 7-bit packing, SysEx frames, and the `Uploader` (port of `lofi_sender.h`) |
 | `pack.js` | `Slot` / `Pack` model (zone rules `fits`, `placeKit`, `placeMelodic`, `autoLayout`), `buildImage` (the image, byte exact with `lfp_build_ex`), `parseImage` (reads a `.lfp` back; the audio is the decoded 2-bit signal) |
 | `audio.js` | import (`decodeAudioData` + an `OfflineAudioContext` with a 7.2 kHz low pass to 16 kHz mono), onset slicing, tail trimming, preview playback |
 | `midi.js` | Web MIDI access, input/output matching by name, SysEx reassembly, the link used by the uploader |
@@ -51,4 +51,3 @@ node web/test/ui_test.js        # the built page in headless Chrome with a mock 
 
 * Verified (above): codec, pack image, protocol against the real device code, and every user flow of the page in headless Chrome with a mocked MIDI port (including decoding a real wav with the browser's own decoder).
 * **Not verified**: a real FM-1 over real Web MIDI (USB or BLE), Chrome for Android, touch gestures (the canvas uses pointer events and should work), other browsers. The page cannot know whether the OS exposes the FM-1's BLE MIDI to Chrome.
-* Differences from the Android app: no microphone, packs are not shared with the phone app, `.lfp` import is new here, `MediaCodec` is replaced by the browser's decoder (the set of supported formats depends on the browser).

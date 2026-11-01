@@ -34,7 +34,7 @@
                                                └─────────────────────────────────────────┘
 ```
 
-The same C files are compiled three ways: into the firmware (with the JieLi clang), into the Android library (NDK) and into the host tests (gcc). Only the platform glue differs, so what the tests verify is the code that ships.
+The same C files are compiled three ways: into the firmware (with the JieLi clang), and into the host tests (gcc). Only the platform glue differs, so what the tests verify is the code that ships.
 
 ## Design decisions and why
 

@@ -1,7 +1,7 @@
 # Pack upload protocol (SysEx over BLE MIDI / USB MIDI)
 
 Files: `core/lofi_proto.h` (framing + the **device state machine**, with the flash abstracted), `core/lofi_sender.h` (C reference sender), `android/.../LofiProto.java` + `Uploader.java` (the phone side, same logic), `firmware/app/lofi_ui.c` (glue: queue, flash functions, `protocol_pump`).
-Tests: `core/sim_upload.c`, `tools/run_e2e.sh` (see BUILD_AND_TEST.md).
+Tests: `core/sim_upload.c`, `web/test/test_e2e.js` (see BUILD_AND_TEST.md).
 
 ## Why SysEx
 

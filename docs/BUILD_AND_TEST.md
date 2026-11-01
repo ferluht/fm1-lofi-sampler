@@ -1,6 +1,6 @@
 # Build and test
 
-All commands are relative to the repository root (`~/fm1-lofi`). Tools used on this machine: `gcc`, `ffmpeg`, `java`/`javac`, Python 3 (the PIL / numpy parts use `~/pcb-ai/.venv/bin/python`), Gradle 8.9 (`~/gradle/gradle-8.9`), Android SDK (`~/android-sdk`, NDK 27.2.12479018, CMake 3.22.1), the JieLi toolchain 2.5.3 installed under wine (`~/fm1/wine/drive_c/JL/pi32`), `tg-send` to push files to Telegram.
+All commands are relative to the repository root (`~/fm1-lofi`). Tools used on this machine: `gcc`, `ffmpeg`, Python 3 (the PIL / numpy parts use `~/pcb-ai/.venv/bin/python`), Gradle 8.9 (`~/gradle/gradle-8.9`), Android SDK (`~/android-sdk`, NDK 27.2.12479018, CMake 3.22.1), the JieLi toolchain 2.5.3 installed under wine (`~/fm1/wine/drive_c/JL/pi32`), `tg-send` to push files to Telegram.
 
 ## 1. Host tests of the core (no hardware, seconds)
 
@@ -27,12 +27,9 @@ gcc -O2 -Wno-misleading-indentation -Wno-unused-result -o sim_upload sim_upload.
 
 `test_engine` was also compared with an independent numpy Hermite resampler: 58.6 dB.
 
-## 2. End-to-end upload test (Java sender ↔ C device)
+## 2. End-to-end upload test
 
-```sh
-tools/run_e2e.sh out/demo.lfp     # builds core/dev_server, compiles Uploader.java + LofiProto.java + tools/e2e/E2E.java,
-                                  # 6 seeds × 0 / 10 / 25 % loss, then a "reboot" of the device process: the image must still be there
-```
+`node web/test/test_e2e.js` runs the JS uploader against the C device (`core/dev_server`) at 0 / 10 / 25 % loss.
 
 ## 3. The firmware
 
@@ -56,15 +53,6 @@ cd hosttest && ./lofi_host ../../out/demo.lfp          # 25+ PASS lines, "ALL CH
 
 Screenshots: `shot_*.ppm` (240×240); the sheets in `docs/img/` were made with a few lines of PIL (`Image.open(...).resize((360,360), NEAREST)` pasted in a grid).
 
-## 4. The Android app
-
-```sh
-cd android
-ANDROID_HOME=~/android-sdk ~/gradle/gradle-8.9/bin/gradle assembleDebug      # ~15 s incremental, ~4 min the first time (both ABIs)
-# → app/build/outputs/apk/debug/app-debug.apk
-```
-
-`android/local.properties` points to the SDK. The JNI library (`app/src/main/cpp`) includes the headers of `../core` directly (`CMakeLists.txt`: `../../../../../core`), so the app and the firmware always decode the same format.
 
 ## 4b. The web editor
 
@@ -81,7 +69,7 @@ See WEB.md. `ui_test.js` needs the headless Chrome of Playwright (`~/.cache/ms-p
 ffmpeg -y -i in.wav -ac 1 -ar 16000 -af "lowpass=f=7000" -f s16le sample.raw
 # a pack: file:lo:hi:root:flags (note ids = zone*32+key; root = pitch class for melodic samples), scale via environment
 gcc -O2 -DFM1_HOST_TEST -Icore -o core/mkpack core/mkpack.c
-A=android/app/src/main/assets/demo; args=""; for i in 1 2 3 4 5 6 7 8 9; do k=$((i-1)); args="$args $A/hit$i.raw:$k:$k:$k:4"; done
+A=samples/demo; args=""; for i in 1 2 3 4 5 6 7 8 9; do k=$((i-1)); args="$args $A/hit$i.raw:$k:$k:$k:4"; done
 LFP_SCALE=4 LFP_ROOT=0 core/mkpack out/demo.lfp DEMO $args $A/tape_key.raw:32:58:0:0:0:4294967295:-14 $A/shiny.raw:64:90:0:0:0:4294967295:-2 $A/phonk.raw:96:122:0:0
 # slice a drum kit WAV into hits by onsets
 ~/pcb-ai/.venv/bin/python -I tools/slice_kit.py samples/TrapKit.wav slices
@@ -91,7 +79,7 @@ tools/run_test.sh ; python tools/pitch_test.py out/Shiny_b2.raw out/pitch/Shiny.
 
 ## 6. Release checklist used so far
 
-1. core tests, `sim_upload`, `run_e2e.sh` (all green).
+1. core tests, `sim_upload`, `web/test/*.js` (all green).
 2. `build_fw.py` → check the image size, run the host harness (all checks), look at the screenshots.
-3. `gradle assembleDebug`; copy the APK to `releases/fm1lofiv0.N.apk`, the page to `releases/FM1-Lofi-Workbench.html`.
+3. copy the page to `releases/FM1-Lofi-Workbench.html`.
 4. Update `docs/CHANGELOG.md` (and these docs if behaviour changed).

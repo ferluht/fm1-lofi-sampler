@@ -1,5 +1,5 @@
 /* The pack upload protocol (SysEx) in JavaScript: framing, CRCs and the sender. Same logic as core/lofi_proto.h (device) and core/lofi_sender.h /
- * android Uploader.java; documented in docs/UPLOAD_PROTOCOL.md. Verified against the real C device code by web/test/test_e2e.js. */
+ * core/lofi_sender.h; documented in docs/UPLOAD_PROTOCOL.md. Verified against the real C device code by web/test/test_e2e.js. */
 (function (LF) {
 'use strict';
 const SECTOR = 4096, BLOCK = 128, MAXMSG = 192;

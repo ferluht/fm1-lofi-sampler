@@ -9,10 +9,9 @@ Version at the time of writing: firmware / app **v0.7**. Image 447 404 / 453 921
 | 2-bit codec | bit exact encode/decode, random access, SNR; listening tests of 2/3/4 bit (user approved 2 bit, incl. drum hits and -4 octave pitch) | decoder runs in every firmware since v0.1 |
 | Pack format, scales, zones | tests | used by the user in versions up to 0.6 |
 | Engine (voices, env, LFO, start/end/reverse, sends, punch-ins, arp, sequencer) | `test_zone`, `test_fx`, `test_seq`, `test_scale`, `test_defaults`, `test_engine` | the user played versions up to 0.6 (feedback: key lag, pattern restart, one-octave melodic zone, defaults) – these were fixed afterwards; **no instrumented measurements** |
-| Upload protocol | `sim_upload` (loss, duplicates, power cut at every flash operation), `run_e2e.sh` (Java sender ↔ C device) | the pack must have been delivered to the FM-1 for the user's tests; **speed and failure behaviour over real BLE were never measured** |
+| Upload protocol | `sim_upload` (loss, duplicates, power cut at every flash operation); the JS uploader against the C device in `web/test/test_e2e.js` | the pack must have been delivered to the FM-1 for the user's tests; **speed and failure behaviour over real BLE were never measured** |
 | Firmware UI | `lofi_host` harness (25+ checks, per-tick drawing limits, all screens rendered) | the user's feedback up to 0.6; v0.7 not yet reported on |
 | Web editor | codec / image byte exact with C; uploader against the real C device; every page flow in headless Chrome with a mocked MIDI port | real Web MIDI to the FM-1 (USB / BLE), Chrome for Android, touch |
-| Android app | builds; Java protocol classes in a JVM | **screens, import (MediaCodec), slicing, BLE scanning, permissions: no screenshots or measurements exist** (no emulator / KVM here) |
 
 Evidence of real use: the changes of versions 0.5-0.7 were requested because of what the user saw on the instrument (lag of the keys, patterns restarting, melodic keys sounding the same, "keyboard starts with F"). Everything below is therefore *known on the host*, *reported by the user*, or *unknown*.
 

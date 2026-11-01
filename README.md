@@ -1,13 +1,13 @@
 # fm1-lofi
 
-A lo-fi sampler that runs **on the M-VAVE FM-1 itself**, plus an Android app that builds sample packs and sends them over Bluetooth (BLE MIDI) or USB.
+A lo-fi sampler that runs **on the M-VAVE FM-1 itself**, plus a **web editor** (one HTML file) that builds sample packs and sends them over Bluetooth (BLE MIDI) or USB.
 
 * Samples are stored in the FM-1's flash as **16 kHz mono, 2 bit** LMS-ADPCM: about 100 s of audio in the 520 KB the firmware has for a pack.
 * The panel is a menu of ten screens (FX, SEL, ENV, LFO, EDIT, GLO, HOME, SAVE, ARP, SEQ), each with four parameters.
 * Keyboard zones, scales, per zone envelope / LFO / start / end / reverse, four send effects with punch-ins, an arpeggiator and a live loop sequencer.
-* The **web editor** (one HTML file, any Chrome or Edge, Web MIDI) or the phone app imports audio, slices it, maps it to zones, previews the real 2-bit sound and uploads the pack.
+* The **web editor** (one HTML file, any Chrome or Edge, Web MIDI) imports audio, slices it, maps it to zones, previews the real 2-bit sound and uploads the pack.
 
-> **Status: v0.9, experimental.** The code is verified on the host (engine tests, upload protocol with packet loss and power-loss injection, a harness that runs the real firmware UI code). It has been tried on a real FM-1 up to v0.6; later versions have **not** been measured on hardware (CPU load, BLE speed, latency). The Android app is superseded by the web editor and its screens were never seen running.
+> **Status: v0.9, experimental.** The code is verified on the host (engine tests, upload protocol with packet loss and power-loss injection, a harness that runs the real firmware UI code). It has been tried on a real FM-1 up to v0.6; later versions have **not** been measured on hardware (CPU load, BLE speed, latency). The web editor has not been tried on a real FM-1 over Web MIDI.
 >
 > **Flashing replaces the firmware of your device.** The flash page embeds the stock V15 image so you can roll back, but you do it at your own risk.
 
@@ -42,7 +42,6 @@ A zone is a bank of 27 keys, switched with OCT- / OCT+. It is either a kit (one 
 | [docs/ENGINE.md](docs/ENGINE.md) | The sampler engine: voices, pitch, envelopes, LFO, effects, arpeggiator, sequencer, saved data |
 | [docs/FIRMWARE.md](docs/FIRMWARE.md) | The firmware UI code, the screen queue, persistence, build constraints and gotchas |
 | [docs/WEB.md](docs/WEB.md) | **The web editor** (replaces the app): usage, modules, tests |
-| [docs/APP.md](docs/APP.md) | The Android app: screens, storage, import and slicing, MIDI link |
 | [docs/BUILD_AND_TEST.md](docs/BUILD_AND_TEST.md) | Every build and test command |
 | [docs/STATUS.md](docs/STATUS.md) | Verification matrix, risks, known limitations, ideas |
 | [docs/CHANGELOG.md](docs/CHANGELOG.md) | The running log of how the project was built |
@@ -56,12 +55,10 @@ cd core && for t in test_scale test_zone test_seq test_fx test_defaults; do
 gcc -O2 -Wno-misleading-indentation -Wno-unused-result -o sim_upload sim_upload.c -lm && ./sim_upload     # upload, packet loss, power-loss sweep
 # firmware flash page (JieLi toolchain under wine, see docs/BUILD_AND_TEST.md)
 python3 tools/build_fw.py firmware ~/fm1/wine/drive_c/JL/pi32      # -> firmware/build/FM1-Lofi-Workbench.html
-# Android app
-cd android && ANDROID_HOME=~/android-sdk ~/gradle/gradle-8.9/bin/gradle assembleDebug   # -> app/build/outputs/apk/debug/app-debug.apk
 ```
 
 Screenshots of the firmware screens (rendered by the host harness) are in `docs/img/` (`firmware_pages3.png` = HOME, SEL, ENV, EDIT, SEQ of v0.6).
-Built artifacts of every version are in `releases/` (`FM1-Lofi-Editor.html` = the web editor, `fm1lofi-v0.N.apk`, `FM1-Lofi-Workbench.html` = the flash page of the newest firmware, which embeds the stock V15 for rollback).
+Built artifacts of every version are in `releases/` (`FM1-Lofi-Editor.html` = the web editor, `FM1-Lofi-Workbench.html` = the flash page of the newest firmware, which embeds the stock V15 for rollback).
 
 ## Repository layout
 
@@ -69,12 +66,11 @@ Built artifacts of every version are in `releases/` (`FM1-Lofi-Editor.html` = th
 core/       portable C shared by firmware, app (JNI) and tests: codec, pack format, upload protocol, sampler engine + tests
 firmware/   fork of the FM-1 open firmware (fm1_open via fm1-daw): app/ (our UI, glue), sdk/ (vendor SDK + closed engine library)
 web/        the web editor (JavaScript, one self-contained HTML file) + tests
-android/    the phone app (Java, NDK/JNI of core/)
-tools/      build_fw.py (wine build), run_e2e.sh, prototype codec, slicer, pitch test
+tools/      build_fw.py (wine build), prototype codec, slicer, pitch test
 docs/       this documentation
 samples/    the source samples used for the tests (Tape Key, Shiny, Phonk, TrapKit)
 out/ mp3/ slices/   test renders and listening files
-releases/   APKs and flash pages
+releases/   flash page and web editor (release assets, not committed)
 ```
 
 ## Licence
