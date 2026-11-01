@@ -1,0 +1,23 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - name: engine tests
+        run: |
+          cd core
+          for t in test_scale test_zone test_seq test_fx test_defaults; do gcc -O1 -DFM1_HOST_TEST -w -I. -o $t $t.c lofi_engine.c -lm && ./$t | tail -1; done
+      - name: firmware UI harness
+        run: |
+          cd firmware
+          gcc -O1 -DFM1_HOST_TEST -w -Isdk/include -Iapp -Iapp/synth -Iapp/board -Ihosttest -o hosttest/lofi_host hosttest/lofi_host.c app/lofi_engine.c -lm
+          cd hosttest && ./lofi_host ../../out/demo.lfp | tail -2
+      - name: web tests
+        run: |
+          node web/test/test_codec.js
+          node web/test/test_pack.js
+          node web/test/test_pitch.js

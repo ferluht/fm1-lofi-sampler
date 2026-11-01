@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.22.1)
+project(lofi C)
+add_library(lofi SHARED lofi_jni.c)
+target_include_directories(lofi PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../core)
+target_compile_options(lofi PRIVATE -Wno-misleading-indentation -Wno-unused-function)

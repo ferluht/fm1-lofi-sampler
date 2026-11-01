@@ -1,0 +1,32 @@
+# build output
+firmware/build/
+android/app/build/
+android/app/.cxx/
+android/.gradle/
+android/local.properties
+web/dist/
+node_modules/
+__pycache__/
+*.pyc
+# host test binaries
+core/dev_server
+core/sim_upload
+core/mkpack
+core/test_core
+core/test_defaults
+core/test_engine
+core/test_fx
+core/test_scale
+core/test_seq
+core/test_zone
+firmware/hosttest/lofi_host
+firmware/hosttest/lofi_host_dbg
+firmware/hosttest/*.ppm
+# renders, listening files, scratch (only the demo pack is tracked: tests and the web build need it)
+out/*
+!out/demo.lfp
+mp3/
+slices/
+# old APKs: the Android app is superseded by the web editor; release files are attached to GitHub releases, not committed
+releases/*.apk
+releases/*.html
