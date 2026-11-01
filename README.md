@@ -63,7 +63,7 @@ Built artifacts of every version are in `releases/` (`FM1-Lofi-Editor.html` = th
 ## Repository layout
 
 ```
-core/       portable C shared by firmware, app (JNI) and tests: codec, pack format, upload protocol, sampler engine + tests
+core/       portable C shared by firmware and tests: codec, pack format, upload protocol, sampler engine + tests
 firmware/   fork of the FM-1 open firmware (fm1_open via fm1-daw): app/ (our UI, glue), sdk/ (vendor SDK + closed engine library)
 web/        the web editor (JavaScript, one self-contained HTML file) + tests
 tools/      build_fw.py (wine build), prototype codec, slicer, pitch test

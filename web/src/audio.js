@@ -1,5 +1,5 @@
 /* Audio import for the browser: any file the browser can decode -> 16 kHz mono int16 (low-passed at 7.2 kHz), slicing helpers, preview playback.
- * The onset detector is the one of the Android app (Java AudioImport.autoSlice). */
+ */
 (function (LF) {
 'use strict';
 const RATE = 16000;

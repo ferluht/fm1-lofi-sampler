@@ -4,7 +4,7 @@ Version at the time of writing: firmware / app **v0.7**. Image 447 404 / 453 921
 
 ## What has been run where
 
-| Part | Host (automated) | Real FM-1 / phone |
+| Part | Host (automated) | Real FM-1 |
 |---|---|---|
 | 2-bit codec | bit exact encode/decode, random access, SNR; listening tests of 2/3/4 bit (user approved 2 bit, incl. drum hits and -4 octave pitch) | decoder runs in every firmware since v0.1 |
 | Pack format, scales, zones | tests | used by the user in versions up to 0.6 |
@@ -21,7 +21,7 @@ Evidence of real use: the changes of versions 0.5-0.7 were requested because of 
 2. **RAM.** `.ram0_bss` is 289 KB of 523 KB; the Bluetooth stack allocates from the rest at run time (unknown amount).
 3. **Control task period / SPI speed** of the screen are unknown, so the real latency of the keys after the screen queue change is not known (the work per tick is bounded; time per tick is not measured).
 4. **Flash writes** (upload, SAVE) silence the audio for their duration and block the control task; SAVE during playback produces a short dropout.
-5. **BLE throughput and robustness** (connection interval, MTU, Android versions, pairing) are unknown; USB is the fallback.
+5. **BLE throughput and robustness** (connection interval, MTU, pairing) are unknown; USB is the fallback.
 6. **Image size**: 6.5 KB of program flash left.
 
 ## Known limitations and small defects
@@ -30,7 +30,7 @@ Evidence of real use: the changes of versions 0.5-0.7 were requested because of 
 * SEQ screen `K4 SCROLL` is a placeholder (stored but not used by the roll).
 * `le_seq_undo` (undo the last REC pass) exists in the engine but is not wired to a button.
 * Settings and loops are saved only by SAVE (and only for the current pack). There is no autosave, no storage of several settings sets per pack.
-* The app cannot edit envelope / LFO / effects / start-end (device only) and cannot import `.lfp` files. Packs live on the phone as PCM; **packs created by an earlier app version are re-laid out** on first open (zones model changed).
+* The editor cannot edit envelope / LFO / effects / start-end (device only) and cannot import `.lfp` files. Packs live in the browser (IndexedDB) as PCM; **packs created by an earlier app version are re-laid out** on first open (zones model changed).
 * Uploading while playing is not supported (the audio is silenced by the flash writes; the upload screen takes over the display).
 * A melodic zone at 27 keys uses all keys; a seven-note scale then spans almost four octaves, at the top the playback speed is 6-8x the stored rate (very bright and aliased, partially lo-fi on purpose).
 * Mono output effects (the delay and the reverb are mono sends into both channels); stereo only from the LFO pan.

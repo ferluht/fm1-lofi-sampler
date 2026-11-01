@@ -3,7 +3,7 @@
 (function (LF) {
 'use strict';
 async function open() {
-  if (!navigator.requestMIDIAccess) throw new Error('this browser has no Web MIDI (use Chrome or Edge, on a phone Chrome for Android)');
+  if (!navigator.requestMIDIAccess) throw new Error('this browser has no Web MIDI (use Chrome or Edge, on a phone Chrome)');
   const access = await navigator.requestMIDIAccess({ sysex: true });
   return access;
 }

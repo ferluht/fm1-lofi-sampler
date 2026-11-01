@@ -1,4 +1,4 @@
-/* FM1 LOFI editor: the browser version of the Android app. Packs live in IndexedDB; import audio, slice, map zones, preview the real 2 bit sound, upload over Web MIDI. */
+/* FM1 LOFI editor: Packs live in IndexedDB; import audio, slice, map zones, preview the real 2 bit sound, upload over Web MIDI. */
 (function () {
 'use strict';
 const LF = window.LF, P = LF.pack, COLORS = ['#ff8a00', '#00ffff', '#00ff00', '#ff00ff', '#ffff00', '#0080ff', '#ff0000', '#9a60ff', '#a0ff30', '#ff8080', '#00a0a0', '#dcdcdc'];

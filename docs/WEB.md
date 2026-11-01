@@ -1,6 +1,6 @@
 # The web editor
 
-`releases/FM1-Lofi-Editor.html` is **one self-contained file** (about 270 KB, no network needed): open it in Chrome or Edge (desktop, or Chrome for Android), build packs and send them to the FM-1 over **Web MIDI** (USB, or a Bluetooth LE MIDI device paired in the system settings). It does everything the Android app does, runs the same codec byte for byte, and in addition reads `.lfp` files back.
+`releases/FM1-Lofi-Editor.html` is **one self-contained file** (about 270 KB, no network needed): open it in Chrome or Edge (desktop or phone), build packs and send them to the FM-1 over **Web MIDI** (USB, or a Bluetooth LE MIDI device paired in the system settings). It does everything the Android app does, runs the same codec byte for byte, and in addition reads `.lfp` files back.
 
 Sources are in `web/src/`, built into the single file by `python3 web/build.py` (output `web/dist/index.html`, copied to `releases/`).
 
@@ -50,4 +50,4 @@ node web/test/ui_test.js        # the built page in headless Chrome with a mock 
 ## Verified / not verified
 
 * Verified (above): codec, pack image, protocol against the real device code, and every user flow of the page in headless Chrome with a mocked MIDI port (including decoding a real wav with the browser's own decoder).
-* **Not verified**: a real FM-1 over real Web MIDI (USB or BLE), Chrome for Android, touch gestures (the canvas uses pointer events and should work), other browsers. The page cannot know whether the OS exposes the FM-1's BLE MIDI to Chrome.
+* **Not verified**: a real FM-1 over real Web MIDI (USB or BLE), Chrome on a phone, touch gestures (the canvas uses pointer events and should work), other browsers. The page cannot know whether the OS exposes the FM-1's BLE MIDI to Chrome.

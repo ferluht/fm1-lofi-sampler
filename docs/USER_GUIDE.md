@@ -3,7 +3,7 @@
 ## 1. What you need
 
 1. An FM-1 flashed with `releases/FM1-Lofi-Workbench.html` (open it in a Web-MIDI browser; the page embeds the stock V15 firmware, so you can go back).
-2. A computer or Android phone with Chrome or Edge to run the web editor (`FM1-Lofi-Editor.html`; Bluetooth LE MIDI or a USB cable to the FM-1).
+2. A computer or phone with Chrome or Edge to run the web editor (`FM1-Lofi-Editor.html`; Bluetooth LE MIDI or a USB cable to the FM-1).
 3. Samples: any audio file the browser can decode (wav, mp3, flac, ogg, aac). The editor ships a DEMO pack (TrapKit hits, Tape Key, Shiny, Phonk bass) so you can start without any files.
 
 ## 2. The panel
@@ -115,14 +115,14 @@ A **piano roll** of the selected pattern: time across, one row per note, bars co
 
 BLE MIDI is on at power-up (the FM-1 is a peripheral). From a MIDI keyboard or a DAW: **notes 0-127 play the note ids directly** (note n = zone n/32, key n%32, so zones 1-4 = notes 0-127), **pitch bend** +-2 semitones, **CC 20 = live speed** (0..127 = -4..+1 octave). With the arpeggiator on, MIDI notes go through it too.
 
-## 8. Uploading a pack (web editor or phone app)
+## 8. Uploading a pack (web editor)
 
 The **web editor** (`releases/FM1-Lofi-Editor.html`, see WEB.md) does the same as the steps below from Chrome / Edge on a computer or phone: CONNECT, pick the FM-1, UPLOAD.
 
 
 1. Open the app, make or open a pack (the DEMO pack is there on the first start). The pack screen shows how full the pack is.
 2. **UPLOAD** → the app lists USB MIDI devices and scans for Bluetooth LE MIDI devices (grant the Bluetooth / location permission). Tap the FM-1.
-3. The FM-1 shows **UPLOAD nn %**; the phone shows the progress. A pack of 160 KB is about 1250 blocks; lost blocks are re-sent automatically.
+3. The FM-1 shows **UPLOAD nn %**; the editor shows the progress. A pack of 160 KB is about 1250 blocks; lost blocks are re-sent automatically.
 4. When it is done the FM-1 returns to HOME with the new pack. Uploading **replaces** the pack on the device, and the loops/settings belong to a pack: a different pack starts with default settings and empty patterns. If the connection drops during an upload the FM-1 is left with **no pack** (never a half pack); just upload again.
 
 See [WEB.md](WEB.md) for the editor.

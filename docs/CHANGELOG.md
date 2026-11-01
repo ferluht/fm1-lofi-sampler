@@ -4,7 +4,7 @@ This file is the running log of the project, written while it was built. The ref
 
 # fm1-lofi
 
-Lo-fi sampler running on the M-VAVE FM-1 itself (firmware fork of ~/fm1/fm1_open), with a new Android app
+Lo-fi sampler running on the M-VAVE FM-1 itself (firmware fork of ~/fm1/fm1_open), with a web pack editor
 (import, slicing, sample packs, upload over BLE MIDI SysEx). The old fm1-sampler / fm1-daw apps are NOT reused.
 
 ## Decisions (2026-11-01)
@@ -59,13 +59,6 @@ core/test_core.c: encoder/decoder bit-exact, random-order superblock decode iden
   MIDI: notes, pitch bend +-2 st, CC20 speed.
 - Unverified on hardware: everything (upload speed over BLE, flash ops from control task, ISR load, screen, whether stock boot code touches flash).
 
-## Android app (done 2026-11-01, builds; NOT run on a phone)
-- android/ (Java, package com.ferluht.lofi, minSdk 23, NDK JNI of the same core headers). Build: `cd android && ANDROID_HOME=~/android-sdk ~/gradle/gradle-8.9/bin/gradle assembleDebug` -> fm1lofi-v0.1.apk.
-- Screens: pack list (capacity bar), pack editor (slots, keys, loop, preview that plays the real 2-bit decode via JNI round trip, speed -4..+1 oct),
-  slicer (waveform, tap = marker, drag, long-press delete, AUTO onset slicing, ALL->KIT / SELECTED->HIT / SELECTED->KEYS), export .lfp, upload (USB MIDI list + BLE MIDI scan, progress, retries).
-- Storage: files/packs/<id>/pack.json + slotN.pcm (16 kHz mono int16), so packs stay editable. No .lfp import yet (export only).
-- Upload verified off-device: tools/run_e2e.sh runs the real Java Uploader against the C device (core/dev_server) at 0/10/25% loss, pack identical after "reboot".
-- Unverified: everything that needs Android/BLE hardware (JNI glue, MediaCodec import, android.media.midi, BLE scan/permissions, real speed).
 
 ## Zones, scale, per-zone voices/glide/choke, sequencer (2026-11-01, host-tested, NOT on hardware)
 - Pack header: byte 28 scale (0 off, 1..7 CHROM MIX MAJ MIN HMIN PHRYG MIN+), byte 29 scale root; table at 1088: per zone voices(0..8)/choke group(0..15)/glide (x10 ms).
@@ -110,7 +103,7 @@ core/test_core.c: encoder/decoder bit-exact, random-order superblock decode iden
   Octave 0 = the F nearest to the sample's pitch class (slot.root). Test: core/test_scale.c (C minor F G Ab Bb C D Eb, D minor, C major), core/test_defaults.c (27 keys all different).
 
 ## Next
-1. Flash FM1-Lofi-Workbench.html (rollback to V15 is embedded), install fm1lofi-v0.1.apk, upload a pack, listen. 2. Measure: BLE speed, ISR load per voice, flash write behaviour. 3. .lfp import, reverse/scrub (seeds already allow it), per-slot lo-fi effects.
+1. Flash FM1-Lofi-Workbench.html (rollback to V15 is embedded), open the web editor, upload a pack, listen. 2. Measure: BLE speed, ISR load per voice, flash write behaviour. 3. .lfp import, reverse/scrub (seeds already allow it), per-slot lo-fi effects.
 - 2026-11-01 docs/CHANGELOG: web editor added (web/), firmware v0.8 sounding keys flip LED
 
 ## v0.9 (2026-11-01, host-tested, NOT on hardware): tuning between zones, readable roll, free first take
@@ -134,8 +127,6 @@ core/test_core.c: encoder/decoder bit-exact, random-order superblock decode iden
 ## v0.9.2
 - Free first take is the default (SEQ page K4 switches to CLICK = count-in + metronome). The setting is not saved: every boot starts in FREE.
 
-## Android app removed (2026-11-01)
-The phone app (android/, Java) was removed from the repository; the web editor replaces it. The sections above describe it as history. Demo audio moved to samples/demo/.
 
 ## v0.9.3 (2026-11-01): RAM fix after a report that v0.9.2 bricks the FM-1
 - Cause (hypothesis, not reproducible on the host): the v0.9.1 stutter added a 64 KB static buffer. The Bluetooth/USB stack allocates from the heap that our statics leave: heap = 105740 bytes in v0.9 and **40 140 bytes in v0.9.1/v0.9.2** (stock V14 has 244 972). A heap that small can fail at boot.

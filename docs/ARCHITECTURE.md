@@ -17,13 +17,13 @@
 ## Data flow
 
 ```
- phone app (Java)                                   FM-1 firmware
+  web editor (JS)                                    FM-1 firmware
  ┌────────────────────────┐                    ┌─────────────────────────────────────────┐
  │ audio file             │                    │ routing task: fm1_app_sysex / midi hooks│
- │  AudioImport (16 kHz)  │                    │        │ queues (no work here)          │
- │  WaveView slicing      │   BLE / USB MIDI   │        ▼                                │
+ │  import (16 kHz)       │                    │        │ queues (no work here)          │
+ │  waveform slicing      │   BLE / USB MIDI   │        ▼                                │
  │  Pack/Slot zones       │ ── SysEx frames ─▶ │ control task: groove_screen_control     │
- │  Lofi (JNI):           │   (lofi protocol)  │   protocol_pump → lf_dev_handle → flash │
+ │  codec.js:             │   (lofi protocol)  │   protocol_pump → lf_dev_handle → flash │
  │   encode 2 bit, build  │                    │   UI pages, keys, LEDs, screen queue    │
  │  Uploader              │                    │        │ event ring (le_note_on, ...)   │
  └────────────────────────┘                    │        ▼                                │
@@ -54,7 +54,7 @@ The same C files are compiled three ways: into the firmware (with the JieLi clan
 
 ## History in one paragraph
 
-The project started from the question "how many seconds of samples fit on the FM-1" (19.55 s with the stock SEA bank). The answer drove a new firmware: custom 2-bit codec (prototype, listening tests), pack format and a resumable SysEx upload with power-loss tests, the engine (voices, scales, zones, then envelope / LFO / effects / arpeggiator / sequencer), the firmware UI (first a list, then the ten-page menu), the Android app (import, slicing, zones, upload), then fixes from the user's trials on the FM-1 (key lag, pattern sync, melodic range, zones as banks, defaults). Details and numbers per step are in CHANGELOG.md.
+The project started from the question "how many seconds of samples fit on the FM-1" (19.55 s with the stock SEA bank). The answer drove a new firmware: custom 2-bit codec (prototype, listening tests), pack format and a resumable SysEx upload with power-loss tests, the engine (voices, scales, zones, then envelope / LFO / effects / arpeggiator / sequencer), the firmware UI (first a list, then the ten-page menu), the web editor (import, slicing, zones, upload), then fixes from the user's trials on the FM-1 (key lag, pattern sync, melodic range, zones as banks, defaults). Details and numbers per step are in CHANGELOG.md.
 
 ## Reused and external parts
 

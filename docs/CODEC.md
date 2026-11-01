@@ -1,6 +1,6 @@
 # The 2-bit codec
 
-Files: `core/lofi_codec.h`, `core/lofi_dqt.inc`. The same header is the firmware decoder, the app's encoder (through JNI) and the host tools.
+Files: `core/lofi_codec.h`, `core/lofi_dqt.inc`. The same header is the firmware decoder, the web editor's encoder (JS port) and the host tools.
 
 ## Why a custom codec
 
@@ -31,7 +31,7 @@ history shifts, state[3] = value
 The dequantiser table is `lofi_dqt[16][4]`: levels `+-round(w/2)` and `+-round(3w/2)` with `w = 2 * 1.75^scale` (min 1). It lives in RAM on the device (`LOFI_DQT_ATTR = FM1_AUDIO_DATA`) because audio runs while the flash is being programmed.
 The decode functions are `always_inline` for the same reason: no call into flash code from the audio interrupt.
 
-## Encoder (host / phone only)
+## Encoder (host / web editor only)
 
 For every group it tries **all 16 scales** (starting from the previous group's scale) and keeps the one with the smallest squared error plus a small penalty that keeps the LMS weights bounded; for every sample it picks the nearest of the 4 levels (analysis-by-synthesis, so the encoder tracks exactly what the decoder will reconstruct). Cost: about 16 × the decode work.
 The encoder and decoder are **bit exact** (`core/test_core.c` checks that encode-then-decode equals the encoder's own reconstruction and that decoding superblocks in reverse order gives the same samples).
@@ -50,4 +50,4 @@ The 2 bit setting was **chosen by listening** (the user compared 2/3/4 bit mp3 r
 
 ## Resampling to 16 kHz in the app
 
-`AudioImport.resample`: windowed-sinc low-pass at 7.2 kHz (or 95 % of Nyquist for low rates) and decimation. WAV files are parsed by the app itself (16/24/32 bit int, 32 bit float, multichannel mixed to mono); everything else goes through `MediaExtractor` + `MediaCodec`.
+`web/src/audio.js`: windowed-sinc low-pass at 7.2 kHz (or 95 % of Nyquist for low rates) and decimation. WAV files are decoded by the browser (16/24/32 bit int, 32 bit float, multichannel mixed to mono); everything else goes through `MediaExtractor` + `MediaCodec`.

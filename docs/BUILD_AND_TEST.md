@@ -1,6 +1,6 @@
 # Build and test
 
-All commands are relative to the repository root (`~/fm1-lofi`). Tools used on this machine: `gcc`, `ffmpeg`, Python 3 (the PIL / numpy parts use `~/pcb-ai/.venv/bin/python`), Gradle 8.9 (`~/gradle/gradle-8.9`), Android SDK (`~/android-sdk`, NDK 27.2.12479018, CMake 3.22.1), the JieLi toolchain 2.5.3 installed under wine (`~/fm1/wine/drive_c/JL/pi32`), `tg-send` to push files to Telegram.
+All commands are relative to the repository root (`~/fm1-lofi`). Tools used on this machine: `gcc`, `ffmpeg`, Python 3 (the PIL / numpy parts use `~/pcb-ai/.venv/bin/python`), the JieLi toolchain 2.5.3 installed under wine (`~/fm1/wine/drive_c/JL/pi32`), `tg-send` to push files to Telegram.
 
 ## 1. Host tests of the core (no hardware, seconds)
 

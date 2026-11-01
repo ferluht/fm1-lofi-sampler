@@ -1,13 +1,7 @@
 # build output
-firmware/build/
-web/dist/
-node_modules/
-__pycache__/
-*.pyc
-# host test binaries
 core/dev_server
-core/sim_upload
 core/mkpack
+core/sim_upload
 core/test_core
 core/test_defaults
 core/test_engine
@@ -15,13 +9,20 @@ core/test_fx
 core/test_scale
 core/test_seq
 core/test_zone
+firmware/build/
 firmware/hosttest/lofi_host
 firmware/hosttest/lofi_host_dbg
 firmware/hosttest/*.ppm
-# renders, listening files, scratch (only the demo pack is tracked: tests and the web build need it)
+# host test binaries
+mp3/
+node_modules/
 out/*
 !out/demo.lfp
-mp3/
-slices/
+*.pyc
+__pycache__/
 # release files are attached to GitHub releases, not committed
+releases/*.apk
 releases/*.html
+# renders, listening files, scratch (only the demo pack is tracked: tests and the web build need it)
+slices/
+web/dist/
