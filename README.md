@@ -13,6 +13,23 @@ A lo-fi sampler that runs **on the M-VAVE FM-1 itself**, plus an Android app tha
 
 See [docs/STATUS.md](docs/STATUS.md) for the verification matrix, the open risks and the known limitations.
 
+## Screenshots
+
+| Web editor: zones | Web editor: slicer |
+|---|---|
+| ![zones](docs/img/web_4_zones.png) | ![slicer](docs/img/web_3_slicer.png) |
+
+Firmware screens (rendered by the host harness): HOME, SEL, ENV, EDIT, SEQ. Sequencer: piano roll, free first take clock, resulting loop.
+
+![firmware screens](docs/img/firmware_pages3.png)
+![sequencer](docs/img/fw_v09_seq_free.png)
+
+## How zones work
+
+![zones](docs/img/zones.svg)
+
+A zone is a bank of 27 keys, switched with OCT- / OCT+. It is either a kit (one sample per key) or one melodic sample spread over the keys as a scale. Details: [docs/USER_GUIDE.md](docs/USER_GUIDE.md#4-zones-banks-of-27-keys).
+
 ## Documents
 
 | File | Content |

@@ -33,6 +33,8 @@ A **pack** (what you upload) holds up to 32 **samples** (the app calls them slot
 
 ## 4. Zones (banks of 27 keys)
 
+![zones](img/zones.svg)
+
 * A zone is the whole keyboard of 27 keys. **OCT- / OCT+** (or HOME K4) switch to the previous / next zone. A pack has up to 8 zones.
 * A zone is **either a kit** (up to 27 samples, one per key) **or one melodic sample**. Keys that have a sample are lit, empty keys are dark.
 * **Melodic zones:** key 1 (F) is the first note of the scale at or above F (in C minor: F), then the next notes of the scale, 27 keys in all (about 4 octaves in a seven note scale).

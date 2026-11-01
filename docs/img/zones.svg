@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" font-family="Helvetica,Arial,sans-serif" font-size="13">
+<style>.t{fill:#222}.s{fill:#666;font-size:11px}.h{font-size:15px;font-weight:bold;fill:#222}.k{stroke:#333;stroke-width:1}.e{fill:#fff}.n{fill:#999;font-size:9px;text-anchor:middle}@media(prefers-color-scheme:dark){.t,.h{fill:#eee}.s{fill:#aaa}.e{fill:#222}.k{stroke:#bbb}}</style>
+<rect width="880" height="520" fill="none"/>
+<text x="20" y="28" class="h">Zones: banks of 27 keys</text>
+<text x="20" y="48" class="s">OCT- / OCT+ (or HOME K4) switch the zone. Note id = zone × 32 + key. A pack has up to 8 zones.</text>
+<text x="20" y="86" class="h">Zone 1 · KIT</text><text x="20" y="102" class="s">one sample per key</text>
+<rect x="190.0" y="70" width="22" height="38" class="k " fill="#e8a33d"/>
+<text x="201.0" y="122" class="n">1</text>
+<rect x="214.0" y="70" width="22" height="38" class="k " fill="#e8a33d"/>
+<text x="225.0" y="122" class="n">2</text>
+<rect x="238.0" y="70" width="22" height="38" class="k " fill="#e8a33d"/>
+<text x="249.0" y="122" class="n">3</text>
+<rect x="262.0" y="70" width="22" height="38" class="k " fill="#e8a33d"/>
+<text x="273.0" y="122" class="n">4</text>
+<rect x="286.0" y="70" width="22" height="38" class="k " fill="#e8a33d"/>
+<text x="297.0" y="122" class="n">5</text>
+<rect x="310.0" y="70" width="22" height="38" class="k " fill="#e8a33d"/>
+<text x="321.0" y="122" class="n">6</text>
+<rect x="334.0" y="70" width="22" height="38" class="k " fill="#e8a33d"/>
+<text x="345.0" y="122" class="n">7</text>
+<rect x="358.0" y="70" width="22" height="38" class="k " fill="#e8a33d"/>
+<text x="369.0" y="122" class="n">8</text>
+<rect x="382.0" y="70" width="22" height="38" class="k " fill="#e8a33d"/>
+<text x="393.0" y="122" class="n">9</text>
+<rect x="406.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="417.0" y="122" class="n">10</text>
+<rect x="430.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="441.0" y="122" class="n">11</text>
+<rect x="454.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="465.0" y="122" class="n">12</text>
+<rect x="478.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="489.0" y="122" class="n">13</text>
+<rect x="502.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="513.0" y="122" class="n">14</text>
+<rect x="526.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="537.0" y="122" class="n">15</text>
+<rect x="550.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="561.0" y="122" class="n">16</text>
+<rect x="574.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="585.0" y="122" class="n">17</text>
+<rect x="598.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="609.0" y="122" class="n">18</text>
+<rect x="622.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="633.0" y="122" class="n">19</text>
+<rect x="646.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="657.0" y="122" class="n">20</text>
+<rect x="670.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="681.0" y="122" class="n">21</text>
+<rect x="694.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="705.0" y="122" class="n">22</text>
+<rect x="718.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="729.0" y="122" class="n">23</text>
+<rect x="742.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="753.0" y="122" class="n">24</text>
+<rect x="766.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="777.0" y="122" class="n">25</text>
+<rect x="790.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="801.0" y="122" class="n">26</text>
+<rect x="814.0" y="70" width="22" height="38" class="k e" fill="none"/>
+<text x="825.0" y="122" class="n">27</text>
+<text x="190" y="142" class="s">hit 1…9 each play at their own pitch; scale and octave are ignored</text>
+<text x="20" y="176" class="h">Zone 2 · MELODIC</text><text x="20" y="192" class="s">one sample over all keys</text>
+<rect x="190.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="201.0" y="212" class="n">1</text>
+<rect x="214.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="225.0" y="212" class="n">2</text>
+<rect x="238.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="249.0" y="212" class="n">3</text>
+<rect x="262.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="273.0" y="212" class="n">4</text>
+<rect x="286.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="297.0" y="212" class="n">5</text>
+<rect x="310.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="321.0" y="212" class="n">6</text>
+<rect x="334.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="345.0" y="212" class="n">7</text>
+<rect x="358.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="369.0" y="212" class="n">8</text>
+<rect x="382.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="393.0" y="212" class="n">9</text>
+<rect x="406.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="417.0" y="212" class="n">10</text>
+<rect x="430.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="441.0" y="212" class="n">11</text>
+<rect x="454.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="465.0" y="212" class="n">12</text>
+<rect x="478.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="489.0" y="212" class="n">13</text>
+<rect x="502.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="513.0" y="212" class="n">14</text>
+<rect x="526.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="537.0" y="212" class="n">15</text>
+<rect x="550.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="561.0" y="212" class="n">16</text>
+<rect x="574.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="585.0" y="212" class="n">17</text>
+<rect x="598.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="609.0" y="212" class="n">18</text>
+<rect x="622.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="633.0" y="212" class="n">19</text>
+<rect x="646.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="657.0" y="212" class="n">20</text>
+<rect x="670.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="681.0" y="212" class="n">21</text>
+<rect x="694.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="705.0" y="212" class="n">22</text>
+<rect x="718.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="729.0" y="212" class="n">23</text>
+<rect x="742.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="753.0" y="212" class="n">24</text>
+<rect x="766.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="777.0" y="212" class="n">25</text>
+<rect x="790.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="801.0" y="212" class="n">26</text>
+<rect x="814.0" y="160" width="22" height="38" class="k " fill="#4aa3d8"/>
+<text x="825.0" y="212" class="n">27</text>
+<text x="201.0" y="184" font-size="10" text-anchor="middle" fill="#fff">F</text>
+<text x="225.0" y="184" font-size="10" text-anchor="middle" fill="#fff">G</text>
+<text x="249.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Ab</text>
+<text x="273.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Bb</text>
+<text x="297.0" y="184" font-size="10" text-anchor="middle" fill="#fff">C</text>
+<text x="321.0" y="184" font-size="10" text-anchor="middle" fill="#fff">D</text>
+<text x="345.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Eb</text>
+<text x="369.0" y="184" font-size="10" text-anchor="middle" fill="#fff">F</text>
+<text x="393.0" y="184" font-size="10" text-anchor="middle" fill="#fff">G</text>
+<text x="417.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Ab</text>
+<text x="441.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Bb</text>
+<text x="465.0" y="184" font-size="10" text-anchor="middle" fill="#fff">C</text>
+<text x="489.0" y="184" font-size="10" text-anchor="middle" fill="#fff">D</text>
+<text x="513.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Eb</text>
+<text x="537.0" y="184" font-size="10" text-anchor="middle" fill="#fff">F</text>
+<text x="561.0" y="184" font-size="10" text-anchor="middle" fill="#fff">G</text>
+<text x="585.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Ab</text>
+<text x="609.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Bb</text>
+<text x="633.0" y="184" font-size="10" text-anchor="middle" fill="#fff">C</text>
+<text x="657.0" y="184" font-size="10" text-anchor="middle" fill="#fff">D</text>
+<text x="681.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Eb</text>
+<text x="705.0" y="184" font-size="10" text-anchor="middle" fill="#fff">F</text>
+<text x="729.0" y="184" font-size="10" text-anchor="middle" fill="#fff">G</text>
+<text x="753.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Ab</text>
+<text x="777.0" y="184" font-size="10" text-anchor="middle" fill="#fff">Bb</text>
+<text x="801.0" y="184" font-size="10" text-anchor="middle" fill="#fff">C</text>
+<text x="825.0" y="184" font-size="10" text-anchor="middle" fill="#fff">D</text>
+<text x="190" y="232" class="s">key 1 = first scale note at or above F, then the scale (here C minor), 27 keys ≈ 4 octaves; zone starts 1 octave below the sample</text>
+<text x="20" y="266" class="h">Zone 3 · KIT</text><text x="20" y="282" class="s">e.g. 20 hits</text>
+<rect x="190.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="201.0" y="302" class="n">1</text>
+<rect x="214.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="225.0" y="302" class="n">2</text>
+<rect x="238.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="249.0" y="302" class="n">3</text>
+<rect x="262.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="273.0" y="302" class="n">4</text>
+<rect x="286.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="297.0" y="302" class="n">5</text>
+<rect x="310.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="321.0" y="302" class="n">6</text>
+<rect x="334.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="345.0" y="302" class="n">7</text>
+<rect x="358.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="369.0" y="302" class="n">8</text>
+<rect x="382.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="393.0" y="302" class="n">9</text>
+<rect x="406.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="417.0" y="302" class="n">10</text>
+<rect x="430.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="441.0" y="302" class="n">11</text>
+<rect x="454.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="465.0" y="302" class="n">12</text>
+<rect x="478.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="489.0" y="302" class="n">13</text>
+<rect x="502.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="513.0" y="302" class="n">14</text>
+<rect x="526.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="537.0" y="302" class="n">15</text>
+<rect x="550.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="561.0" y="302" class="n">16</text>
+<rect x="574.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="585.0" y="302" class="n">17</text>
+<rect x="598.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="609.0" y="302" class="n">18</text>
+<rect x="622.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="633.0" y="302" class="n">19</text>
+<rect x="646.0" y="250" width="22" height="38" class="k " fill="#7bb661"/>
+<text x="657.0" y="302" class="n">20</text>
+<rect x="670.0" y="250" width="22" height="38" class="k e" fill="none"/>
+<text x="681.0" y="302" class="n">21</text>
+<rect x="694.0" y="250" width="22" height="38" class="k e" fill="none"/>
+<text x="705.0" y="302" class="n">22</text>
+<rect x="718.0" y="250" width="22" height="38" class="k e" fill="none"/>
+<text x="729.0" y="302" class="n">23</text>
+<rect x="742.0" y="250" width="22" height="38" class="k e" fill="none"/>
+<text x="753.0" y="302" class="n">24</text>
+<rect x="766.0" y="250" width="22" height="38" class="k e" fill="none"/>
+<text x="777.0" y="302" class="n">25</text>
+<rect x="790.0" y="250" width="22" height="38" class="k e" fill="none"/>
+<text x="801.0" y="302" class="n">26</text>
+<rect x="814.0" y="250" width="22" height="38" class="k e" fill="none"/>
+<text x="825.0" y="302" class="n">27</text>
+<text x="20" y="336" class="h">Zones 4…8</text><text x="20" y="352" class="s">free: a kit, or one melodic sample each</text>
+<rect x="190.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="201.0" y="372" class="n">1</text>
+<rect x="214.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="225.0" y="372" class="n">2</text>
+<rect x="238.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="249.0" y="372" class="n">3</text>
+<rect x="262.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="273.0" y="372" class="n">4</text>
+<rect x="286.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="297.0" y="372" class="n">5</text>
+<rect x="310.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="321.0" y="372" class="n">6</text>
+<rect x="334.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="345.0" y="372" class="n">7</text>
+<rect x="358.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="369.0" y="372" class="n">8</text>
+<rect x="382.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="393.0" y="372" class="n">9</text>
+<rect x="406.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="417.0" y="372" class="n">10</text>
+<rect x="430.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="441.0" y="372" class="n">11</text>
+<rect x="454.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="465.0" y="372" class="n">12</text>
+<rect x="478.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="489.0" y="372" class="n">13</text>
+<rect x="502.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="513.0" y="372" class="n">14</text>
+<rect x="526.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="537.0" y="372" class="n">15</text>
+<rect x="550.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="561.0" y="372" class="n">16</text>
+<rect x="574.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="585.0" y="372" class="n">17</text>
+<rect x="598.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="609.0" y="372" class="n">18</text>
+<rect x="622.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="633.0" y="372" class="n">19</text>
+<rect x="646.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="657.0" y="372" class="n">20</text>
+<rect x="670.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="681.0" y="372" class="n">21</text>
+<rect x="694.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="705.0" y="372" class="n">22</text>
+<rect x="718.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="729.0" y="372" class="n">23</text>
+<rect x="742.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="753.0" y="372" class="n">24</text>
+<rect x="766.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="777.0" y="372" class="n">25</text>
+<rect x="790.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="801.0" y="372" class="n">26</text>
+<rect x="814.0" y="320" width="22" height="38" class="k e" fill="none"/>
+<text x="825.0" y="372" class="n">27</text>
+<rect x="20" y="400" width="840" height="100" rx="8" fill="none" stroke="#888"/>
+<text x="36" y="424" class="h">Tuning between melodic zones</text>
+<text x="36" y="446" class="t">Each melodic sample has a root (pitch class) and a fine tune in cents (−50…+50). The web editor detects both</text>
+<text x="36" y="464" class="t">(SELECTED → KEYS, or EDIT → DETECT PITCH). The engine adds the tune to the pitch of every note, so</text>
+<text x="36" y="482" class="t">Tape Key (−14 ct), Shiny (−2 ct) and Phonk (0 ct) all land on the same scale notes.</text>
+</svg>
