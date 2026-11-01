@@ -141,3 +141,5 @@ The phone app (android/, Java) was removed from the repository; the web editor r
 - Cause (hypothesis, not reproducible on the host): the v0.9.1 stutter added a 64 KB static buffer. The Bluetooth/USB stack allocates from the heap that our statics leave: heap = 105740 bytes in v0.9 and **40 140 bytes in v0.9.1/v0.9.2** (stock V14 has 244 972). A heap that small can fail at boot.
 - Stutter now runs at half rate in a 12 KB buffer, the delay line is 15800 samples (0.72 s, was 22000) to pay for it: heap 105 740 bytes again (= v0.9). Not yet known whether even that is enough: every build after v0.6 is untested on hardware. A smaller GFX pool was tried and rejected (key lag, 133 calls per tick).
 - Lesson: check `_MALLOC_SIZE` in firmware/build/dx7/sdk.map after every build (stock 244 972, v0.6 about 140 000).
+
+- Confirmed on a real FM-1 (2026-11-01): v0.9.3 boots and works (stutter, free take, tuning). First hardware-verified build since v0.6.

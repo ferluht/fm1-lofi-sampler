@@ -7,7 +7,7 @@ A lo-fi sampler that runs **on the M-VAVE FM-1 itself**, plus a **web editor** (
 * Keyboard zones, scales, per zone envelope / LFO / start / end / reverse, four send effects with punch-ins, an arpeggiator and a live loop sequencer.
 * The **web editor** (one HTML file, any Chrome or Edge, Web MIDI) imports audio, slices it, maps it to zones, previews the real 2-bit sound and uploads the pack.
 
-> **Status: v0.9, experimental.** The code is verified on the host (engine tests, upload protocol with packet loss and power-loss injection, a harness that runs the real firmware UI code). It has been tried on a real FM-1 up to v0.6; later versions have **not** been measured on hardware (CPU load, BLE speed, latency). The web editor has not been tried on a real FM-1 over Web MIDI.
+> **Status: v0.9, experimental.** The code is verified on the host (engine tests, upload protocol with packet loss and power-loss injection, a harness that runs the real firmware UI code). v0.9.3 has been confirmed working on a real FM-1 (boots, plays, stutter, free take); v0.9.1 and v0.9.2 are known bad (heap exhaustion). CPU load, BLE speed and latency have **not** been measured (CPU load, BLE speed, latency). The web editor has not been tried on a real FM-1 over Web MIDI.
 >
 > **Flashing replaces the firmware of your device.** The flash page embeds the stock V15 image so you can roll back, but you do it at your own risk.
 
