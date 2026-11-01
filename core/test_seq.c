@@ -9,7 +9,7 @@ static void until_tick(unsigned t){ int guard=0; while(st().tick<t && guard++<10
 int main(void){ for(int i=0;i<32000;i++) pcm[i]=(int16_t)(6000*((i/40)%2?1:-1));
   lfp_input_t in[2]={ {"kick",pcm,16000,0,LFP_NO_LOOP,53,53,53,4,0,0,0}, {"keys",pcm,32000,0,LFP_NO_LOOP,60,71,60,0,0,0,0} };
   uint32_t bytes; uint8_t*img=lfp_build_ex("s",0,0,in,2,&bytes); le_init(); assert(le_bind(img,bytes)==0); for(unsigned _i=0;_i<le_info()->n_slots;_i++) le_zone(_i)->r=40, le_zone(_i)->oct=0;
-  le_seq_set_bpm(120); le_seq_set_bars(1); le_seq_set_quant(2); le_seq_set_metro(1,1); run(1);
+  le_seq_set_free(0); le_seq_set_bpm(120); le_seq_set_bars(1); le_seq_set_quant(2); le_seq_set_metro(1,1); run(1);
   struct le_seq_status s=st(); assert(s.bpm==120 && s.bars==1 && s.quant==2 && s.loop_ticks==384);
   /* record: count-in of one bar, then the kick a little after beat 2 (tick 96+5 -> 1/16 grid 24 -> 96), a key at tick 200 -> 192 */
   le_seq_rec(1); run(1); assert(st().state==LS_COUNTIN);

@@ -98,7 +98,7 @@ static void tables_init(void)
 void le_init(void)
 {
     memset(&g, 0, sizeof g); memset(&q, 0, sizeof q); memset(&ar, 0, sizeof ar); ar.rnd = 12345; ar.cur = -1;
-    q.bpm = 140; q.quant = 2; q.metro = 1; q.countin = 1; q.beats = 4; for (unsigned p = 0; p < LS_PATTERNS; p++) q.bars[p] = 2;
+    q.freemode = 1; q.bpm = 140; q.quant = 2; q.metro = 1; q.countin = 1; q.beats = 4; for (unsigned p = 0; p < LS_PATTERNS; p++) q.bars[p] = 2;
     g.scale = 4; g.scale_root = 0;                      /* C minor until a pack says otherwise */
     g.punch_speed_q16 = 65536; g.gate_g = 32768; seq_calc(); tables_init(); fx_defaults(); le_set_speed(0); le_set_bend(0); le_set_level(100);
 }

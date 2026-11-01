@@ -5,7 +5,7 @@
 static int16_t pcm[16000]; static int32_t b[256];
 static double rms(int n){ double s=0; for(int i=0;i<n;i++){ le_render(b,128); for(int f=0;f<256;f++){ double x=b[f]/8388608.0; s+=x*x; } } return sqrt(s/(n*256.0)); }
 int main(void){ le_init(); assert(le_get_scale()==4 && le_get_scale_root()==0); puts("scale is C minor from the start");
-  struct le_seq_status st; le_seq_status_get(&st); assert(st.bpm==140); puts("bpm 140");
+  struct le_seq_status st; le_seq_status_get(&st); assert(st.bpm==140 && st.freemode==1); puts("bpm 140, free first take by default");
   for(int i=0;i<16000;i++) pcm[i]=(int16_t)(6000*((i/40)%2?1:-1));
   lfp_input_t in[2]={{"keys",pcm,16000,0,LFP_NO_LOOP,0,26,5,0,0,0,0},{"kit",pcm,16000,0,LFP_NO_LOOP,32,32,32,4,0,0,0}};
   uint32_t bytes; uint8_t *img=lfp_build_ex("d",0,0,in,2,&bytes); assert(le_bind(img,bytes)==0);

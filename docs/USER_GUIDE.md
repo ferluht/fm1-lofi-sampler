@@ -133,7 +133,7 @@ BPM 140 · scale C minor · zone octave -1 for melodic zones · release about 1 
 
 
 ## Free first take (v0.9)
-SEQ page, K4 `1ST TAKE`: CLICK (count-in + metronome, the tempo is set first) or FREE. With FREE press REC (blinking), play whenever you want: the clock starts with the first key. Press REC or PLAY to end: the length of the take is rounded to 1, 2, 4 or 8 bars and the tempo is calculated from it, then the loop plays.
+SEQ page, K4 `1ST TAKE`: FREE (the default) or CLICK (count-in + metronome, the tempo is set first). With FREE press REC (blinking), play whenever you want: the clock starts with the first key. Press REC or PLAY to end: the length of the take is rounded to 1, 2, 4 or 8 bars and the tempo is calculated from it, then the loop plays.
 
 ## Tuning melodic samples (v0.9)
 In the web editor SELECTED -> KEYS finds the pitch of the sample and its offset in cents; EDIT shows both (fine tune, DETECT PITCH). All melodic zones then play in tune with each other.

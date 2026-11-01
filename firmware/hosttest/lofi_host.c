@@ -87,6 +87,7 @@ int main(int argc, char **argv) {
     CHECK(led[14 + 11] && !led[14 + 12], "FX: the first 12 keys are lit (punch-ins), the others dark");
     /* ARP */
     press_btn(10); turn(0, 1); CHECK(le_arp()->on == 1, "ARP switched on with SELECT"); turn(2, 1); turn(3, 2); turn(5, 4); ctl.keys = (1u << 0) | (1u << 2) | (1u << 4); tick(40); shot("arp"); ctl.keys = 0; tick(8); turn(0, -1); CHECK(le_arp()->on == 0, "ARP off again");
+    le_seq_set_free(0); tick(2);
     /* SEQ + SAVE: record a pattern with a count-in, PLAY while recording only stops the recording */
     press_btn(9); ctl.keys = 1u << 2; tick(2); ctl.keys = 0; tick(2); le_seq_status_get(&st); CHECK(st.pattern == 2, "SAVE: key 2 selects pattern C");
     press_btn(11); turn(2, -1); turn(3, 0); le_seq_status_get(&st);

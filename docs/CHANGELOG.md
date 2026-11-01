@@ -130,3 +130,6 @@ core/test_core.c: encoder/decoder bit-exact, random-order superblock decode iden
 ## v0.9.1 (2026-11-01, host-tested, NOT on hardware)
 - Punch-in GAT (fast gate) replaced by STU, a real stutter / beat repeat: records the first 1/16 note (at the current BPM, max 0.37 s) after the press and loops it with 32 frame edge fades until release. 64 KB RAM. Test: test_fx.c (repeats are identical; without the punch they differ). ST8 / S16 stay rhythmic gates.
 - Waveform on HOME / EDIT is normalised: the loudest peak of the sample fills the whole height.
+
+## v0.9.2
+- Free first take is the default (SEQ page K4 switches to CLICK = count-in + metronome). The setting is not saved: every boot starts in FREE.
