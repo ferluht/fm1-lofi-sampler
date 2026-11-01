@@ -12,6 +12,7 @@
 #define RING 64u
 #define BLK 128u
 enum { EV_ON = 1, EV_OFF, EV_ALLOFF, EV_AON, EV_AOFF, EV_ARELEASE, EV_ZCUT, EV_SEQ = 16 };   /* SEQ commands: type EV_SEQ + n, slot/key/vel/pitch carry the argument */
+#define STUT_MAX 16384          /* stutter slice: at most 16384 frames (0.37 s), 64 KB */
 typedef struct { uint8_t type, slot, key, vel; int32_t pitch_q8; } event_t;   /* pitch: 1/48 octave steps x 256 relative to the sample */
 typedef struct {
     uint8_t active, released, fast, oneshot, loop, rev, key, vel, stage; uint16_t slot;
@@ -38,7 +39,7 @@ static struct {
     uint16_t f_tab[128];
     int16_t rv[RV_C0 + RV_C1 + RV_C2 + RV_C3 + RV_A0 + RV_A1]; uint16_t rv_i[6]; int32_t rv_lp[4];
     int16_t dly[DLY_N]; uint32_t dly_w; int32_t dly_lp, dly_hold, dly_acc; uint8_t dly_phase;
-    int32_t gate_g, cr_hold; uint32_t cr_ctr; svf_t flt, pf; int32_t pcr_hold; uint32_t pcr_ctr;
+    int32_t gate_g, cr_hold; uint32_t st_len, st_pos; uint8_t st_on, st_rec; int16_t st_buf[2 * STUT_MAX]; uint32_t cr_ctr; svf_t flt, pf; int32_t pcr_hold; uint32_t pcr_ctr;
 } g;
 typedef struct { uint16_t tick; uint8_t note, vel, on, fresh, pass, pad; } sev_t;
 static struct {
@@ -561,18 +562,27 @@ static FM1_AUDIO_CODE void fx_run(int32_t *out, unsigned frames)
 static FM1_AUDIO_CODE void punch_master(int32_t *out, unsigned frames)
 {
     const unsigned pn = g.punch;
-    if (!(pn & (1u << PN_CRUSH | 1u << PN_DOWN | 1u << PN_LPF | 1u << PN_HPF | 1u << PN_STUT8 | 1u << PN_STUT16 | 1u << PN_GATE | 1u << PN_STOP)) && g.punch_speed_q16 >= 65000) return;
-    uint32_t period = (pn & (1u << PN_STUT16)) ? 24 : (pn & (1u << PN_STUT8)) ? 48 : (pn & (1u << PN_GATE)) ? 24 : 0, open = (pn & (1u << PN_GATE)) ? 6 : period / 2;
+    if (!(pn & (1u << PN_CRUSH | 1u << PN_DOWN | 1u << PN_LPF | 1u << PN_HPF | 1u << PN_STUT8 | 1u << PN_STUT16 | 1u << PN_STUTTER | 1u << PN_STOP)) && g.punch_speed_q16 >= 65000) return;
+    uint32_t period = (pn & (1u << PN_STUT16)) ? 24 : (pn & (1u << PN_STUT8)) ? 48 : 0, open = period / 2;
     int32_t gate_t = !period || (g.mclk % period) < open ? 32768 : 0;
     int32_t fade = g.punch_speed_q16 < 16384 ? (g.punch_speed_q16 - 4096) * 32768 / 12288 : 32768; if (fade < 0) fade = 0;
     for (unsigned f = 0; f < frames; f++) {
         g.gate_g += (gate_t - g.gate_g) >> 5;
+        if (pn & (1u << PN_STUTTER)) {      /* beat repeat: the first 1/16 note after the press passes through and is recorded, then it loops until the key is released */
+            if (!g.st_on) { uint32_t l = q.bpm ? 661500u / q.bpm : 5512u; g.st_len = l < 256 ? 256 : l > STUT_MAX ? STUT_MAX : l; g.st_pos = 0; g.st_rec = 1; g.st_on = 1; }
+        } else g.st_on = 0;
         for (unsigned c = 0; c < 2; c++) {
             int32_t x = sat16(out[2 * f + c] >> 8);
+            if (g.st_on) {
+                int16_t *sb = &g.st_buf[2 * g.st_pos + c];
+                if (g.st_rec) *sb = (int16_t)x;
+                else { uint32_t e0 = g.st_pos < g.st_len - 1 - g.st_pos ? g.st_pos : g.st_len - 1 - g.st_pos; x = *sb; if (e0 < 32) x = x * (int32_t)(e0 + 1) / 33; }       /* 32 frame fades at the loop edges: no click */
+            }
             if (pn & (1u << PN_CRUSH)) x = crush_tick(x, 5, 3, &g.pcr_hold, &g.pcr_ctr); else if (pn & (1u << PN_DOWN)) x = crush_tick(x, 12, 9, &g.pcr_hold, &g.pcr_ctr);
             if (pn & (1u << PN_LPF)) x = svf_tick(&g.pf, x, g.f_tab[34], 30000, 0); else if (pn & (1u << PN_HPF)) x = svf_tick(&g.pf, x, g.f_tab[88], 30000, 1);
             out[2 * f + c] = (int32_t)(((int64_t)x * 256 * g.gate_g >> 15) * fade >> 15);
         }
+        if (g.st_on && ++g.st_pos >= g.st_len) { g.st_pos = 0; g.st_rec = 0; }
     }
 }
 /* ---------------- render ---------------- */

@@ -147,7 +147,7 @@ enum { PG_HOME, PG_FX, PG_SEL, PG_ENV, PG_LFO, PG_EDIT, PG_GLO, PG_SAVE, PG_ARP,
 static const uint8_t page_btn[PG_COUNT] = {8, 2, 3, 4, 5, 6, 7, 9, 10, 11};      /* panel buttons: HOME FX SEL ENV LFO EDIT GLO SAVE ARP SEQ */
 static const char *const page_name[PG_COUNT] = {"HOME", "FX", "SEL", "ENV", "LFO", "EDIT", "GLO", "SAVE", "ARP", "SEQ"};
 static const char *const fx_name[FX_COUNT] = {"REVERB", "DELAY", "CRUSH", "FILTER"};
-static const char *const punch_name[PN_COUNT] = {"REV", "DLY", "CRU", "DWN", "LPF", "HPF", "ST8", "S16", "GAT", "HLF", "DBL", "STP"};
+static const char *const punch_name[PN_COUNT] = {"REV", "DLY", "CRU", "DWN", "LPF", "HPF", "ST8", "S16", "STU", "HLF", "DBL", "STP"};
 static const char *const note_nm[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 static uint8_t page = PG_HOME, dirty = 3, bound_seen, unsaved, fx_sel, hdr_key_valid; static uint32_t hdr_key;
 static int az;                                                 /* the active zone: ENV, LFO, EDIT, FX sends and the waveform follow it */
@@ -387,8 +387,9 @@ static void draw_wave(unsigned y0, unsigned h, int markers)       /* the active 
     uint16_t col = zone_col[az % 12]; unsigned cy = y0 + h / 2;
     gfx_fill(10, cy, 220, 1, COL_BAR);
     if (!wave_ready) { gfx_fill(10, y0, 220, h, COL_BG); gfx_fill(10, cy, 220, 1, COL_BAR); unsigned pct = wave_sb * LOFI_SUPER * 100 / (s->frames ? s->frames : 1); char b[8]; fmt_int(b, (int)pct); unsigned n = 0; while (b[n]) ++n; b[n++] = '%'; b[n] = 0; draw_text(10, y0 + 2, 1, b, COL_DIM, COL_BG); }
+    int pk = 2; for (unsigned c = 0; c < 220; ++c) { if (wmax[c] > pk) pk = wmax[c]; if (-wmin[c] > pk) pk = -wmin[c]; }      /* normalised: the loudest peak of the sample fills the whole height */
     for (unsigned c = 0; c < 220; ++c) {
-        int hi = wmax[c] * (int)h / 256, lo = -wmin[c] * (int)h / 256; if (hi < 0) hi = 0; if (lo < 0) lo = 0;
+        int hi = wmax[c] * (int)h / (2 * pk), lo = -wmin[c] * (int)h / (2 * pk); if (hi < 0) hi = 0; if (lo < 0) lo = 0;
         unsigned x = 10 + c; uint16_t cc = col;
         if (markers) { unsigned sx = (unsigned)((uint64_t)z->start * 220 / s->frames), ex = z->end ? (unsigned)((uint64_t)z->end * 220 / s->frames) : 220; if (c < sx || c >= ex) cc = COL_DIM; }
         gfx_fill(x, cy - (unsigned)hi, 1, (unsigned)(hi + lo + 1), cc);

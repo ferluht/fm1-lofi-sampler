@@ -126,3 +126,7 @@ core/test_core.c: encoder/decoder bit-exact, random-order superblock decode iden
 - Free first take (engine existed since 13:57, UI missing): SEQ page K4 "1ST TAKE" CLICK / FREE. REC with FREE = armed (no count-in, REC LED blinks), the clock starts with the first key, REC or PLAY ends it,
   length -> 1/2/4/8 bars and BPM (40..240), events are scaled onto the grid, the loop plays. Header shows FREE, the screen shows a seconds clock. Test: test_seq.c (engine) and lofi_host.c (UI).
 - Image 449740 of 453921 bytes (4.1 KB free).
+
+## v0.9.1 (2026-11-01, host-tested, NOT on hardware)
+- Punch-in GAT (fast gate) replaced by STU, a real stutter / beat repeat: records the first 1/16 note (at the current BPM, max 0.37 s) after the press and loops it with 32 frame edge fades until release. 64 KB RAM. Test: test_fx.c (repeats are identical; without the punch they differ). ST8 / S16 stay rhythmic gates.
+- Waveform on HOME / EDIT is normalised: the loudest peak of the sample fills the whole height.

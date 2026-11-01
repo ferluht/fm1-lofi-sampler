@@ -47,7 +47,7 @@ enum { FX_REVERB, FX_DELAY, FX_CRUSH, FX_FILTER, FX_COUNT };
 /* fx params [fx][0..2] (the 4th tile of the screen is the zone's send): REVERB size damp return | DELAY time feedback tone | CRUSH bits rate return | FILTER cutoff reso type */
 uint8_t *le_fx_params(unsigned fx);
 /* punch-ins: momentary master effects; id 0..11 */
-enum { PN_REVERB, PN_DELAY, PN_CRUSH, PN_DOWN, PN_LPF, PN_HPF, PN_STUT8, PN_STUT16, PN_GATE, PN_HALF, PN_DOUBLE, PN_STOP, PN_COUNT };
+enum { PN_REVERB, PN_DELAY, PN_CRUSH, PN_DOWN, PN_LPF, PN_HPF, PN_STUT8, PN_STUT16, PN_STUTTER, PN_HALF, PN_DOUBLE, PN_STOP, PN_COUNT };
 void le_punch(unsigned id, int on);
 /* arpeggiator: when on, keys go through le_arp_note_*; cfg is edited in place */
 typedef struct { uint8_t on, rate /*0 1/4, 1 1/8, 2 1/16, 3 1/32*/, dir /*0 up 1 down 2 updown 3 random*/, range /*1..4*/, gate /*5..100 %*/; } le_arp_t;

@@ -70,4 +70,11 @@ int main(void){
   uint8_t blob[1024]; unsigned n=le_settings_export(blob,sizeof blob); printf("settings blob %u bytes\n",n); assert(n>0);
   le_bind(img,0xffffffff==0?0:0); /* keep */
   fresh(one,1,&img); assert(le_zone(0)->a==0); assert(le_settings_import(blob,n)==0); assert(le_zone(0)->a==33 && le_zone(0)->lfo_depth==77 && le_zone(0)->start==1000 && le_zone(0)->end==50000 && le_zone(0)->send[1]==55 && le_fx_params(FX_DELAY)[1]==99 && le_arp()->range==3 && le_get_level()==64);
+  /* punch-in STUTTER (beat repeat): after the first 1/16 note the slice repeats, identical every time */
+  { lfp_input_t pr[1]={{"p",ramp,32000,0,LFP_NO_LOOP,60,71,60,0,0,0,0}}; static int32_t big[2*4*8192]; unsigned S=661500u/120;
+    for(int rep=0;rep<2;rep++){ fresh(pr,1,&img); le_seq_set_bpm(120); run(1); le_zone(0)->r=127; le_note_on(60,110); run(40); if(rep) le_punch(PN_STUTTER,1);
+      unsigned n=0; while(n<3*S+1024){ le_render(b,128); memcpy(big+2*n,b,128*2*4); n+=128; }
+      unsigned d=0; for(unsigned k=40;k<S-40;k++) if(abs(big[2*(S+k)]-big[2*(2*S+k)])>64) d++;
+      printf("stutter %s: %u of %u frames differ between repeat 1 and 2\n",rep?"on":"off",d,S-80);
+      if(rep) assert(d==0); else assert(d>S/10); le_punch(PN_STUTTER,0); } }
   puts("settings ok"); puts("effects/zone tests passed"); return 0; }

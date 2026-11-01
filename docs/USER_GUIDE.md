@@ -68,7 +68,7 @@ SELECT picks the effect: **REVERB, DELAY, CRUSH, FILTER**. They are **send effec
 
 **On this screen the keys are punch-in effects** (momentary, key up = effect off), keys 1..12:
 `REV` reverb throw, `DLY` delay throw, `CRU` heavy bit crush, `DWN` down-sample, `LPF` low pass (closes the sound), `HPF` high pass,
-`ST8` / `S16` stutter gates at 1/8 and 1/16, `GAT` fast trance gate, `HLF` half speed, `DBL` double speed, `STP` tape stop (slows down and fades while held, comes back on release).
+`ST8` / `S16` stutter gates at 1/8 and 1/16, `STU` stutter (beat repeat): the first 1/16 note after the press passes through and is recorded, then it loops until you release the key; ST8 / S16 are rhythmic gates, `HLF` half speed, `DBL` double speed, `STP` tape stop (slows down and fades while held, comes back on release).
 Their keys are lit.
 
 ### SEL
