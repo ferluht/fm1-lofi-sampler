@@ -77,7 +77,7 @@ cd core && for t in test_scale test_zone test_seq test_fx test_defaults; do gcc 
 # web (node 24)
 node web/test/test_codec.js && node web/test/test_pack.js && node web/test/test_pitch.js
 ```
-CI runs the same on every push (`.github/workflows/ci.yml`). Building the firmware needs the JieLi toolchain under wine (docs/BUILD_AND_TEST.md).
+A CI workflow with the same commands is provided (`docs/ci.yml.example`, copy it to `.github/workflows/ci.yml`). Building the firmware needs the JieLi toolchain under wine (docs/BUILD_AND_TEST.md).
 
 ## Contributing and credits
 
