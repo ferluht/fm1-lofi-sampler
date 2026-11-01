@@ -1,6 +1,6 @@
 # The web editor
 
-`releases/FM1-Lofi-Editor.html` is **one self-contained file** (about 270 KB, no network needed): open it in Chrome or Edge (desktop or phone), build packs and send them to the FM-1 over **Web MIDI** (USB, or a Bluetooth LE MIDI device paired in the system settings). It does everything the Android app does, runs the same codec byte for byte, and in addition reads `.lfp` files back.
+`releases/FM1-Lofi-Editor.html` is **one self-contained file** (about 270 KB, no network needed): open it in Chrome or Edge (desktop or phone), build packs and send them to the FM-1 over **Web MIDI** (USB, or a Bluetooth LE MIDI device paired in the system settings). It does everything the  app does, runs the same codec byte for byte, and in addition reads `.lfp` files back.
 
 Sources are in `web/src/`, built into the single file by `python3 web/build.py` (output `web/dist/index.html`, copied to `releases/`).
 
