@@ -99,3 +99,5 @@ Issues and pull requests are welcome, especially hardware measurements and bug r
 ## Licence
 
 GPL-3.0 ([LICENSE](LICENSE)). `firmware/` is a fork of the GPLv3 FM-1 open firmware with the SDK linking exception ([firmware/LICENSE.md](firmware/LICENSE.md)); the vendor SDK keeps its own terms (firmware/THIRD_PARTY.md). Demo audio: see samples/README.md.
+
+You can also try FM-1 Lofi Sampler in the browser, no flashing needed, in the free community [FM-1 Emulator](https://fm1-emulator.atst.tools/).
